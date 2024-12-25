@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Card with Enhanced Bubbles</title>
+  <!-- FontAwesome for Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <style>
+    /* Basic Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #eafaf1;
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Bubble Animation */
+    .bubbles {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    .bubble {
+      position: absolute;
+      bottom: -100px;
+      width: 50px;
+      height: 50px;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      animation: bubble-animation 10s linear infinite;
+    }
+
+    @keyframes bubble-animation {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-120vh) scale(0.8);
+        opacity: 0;
+      }
+    }
+
+    .bubble:nth-child(1) { left: 10%; animation-duration: 12s; animation-delay: 0s; }
+    .bubble:nth-child(2) { left: 25%; animation-duration: 14s; animation-delay: 2s; }
+    .bubble:nth-child(3) { left: 40%; animation-duration: 10s; animation-delay: 1s; }
+    .bubble:nth-child(4) { left: 60%; animation-duration: 15s; animation-delay: 3s; }
+    .bubble:nth-child(5) { left: 75%; animation-duration: 11s; animation-delay: 4s; }
+
+    /* Card Styles */
+    .card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 300px;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    .profile-pic {
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
+
+    .name {
+      font-size: 1.5em;
+      font-weight: bold;
+      margin: 10px 0 5px;
+    }
+
+    .subtitle {
+      font-size: 0.9em;
+      color: #777;
+      margin-bottom: 15px;
+    }
+
+    .contact-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: none; /* Hidden initially */
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    .contact-list li {
+      display: flex;
+      align-items: center;
+      margin: 10px 0;
+    }
+
+    .contact-list li img {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+    }
+
+    .contact-list li a {
+      text-decoration: none;
+      color: #333;
+      font-size: 0.9em;
+    }
+
+    /* Floating Button Inside the Card */
+    .toggle-btn {
+      position: absolute;
+      bottom: 10px; /* Position the button at the bottom */
+      right: 10px; /* Place it on the right side */
+      width: 40px;
+      height: 40px;
+      border: none;
+      border-radius: 50%;
+      background-color: #00bcd4;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      color: white;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      z-index: 2;
+    }
+
+    .toggle-btn:hover {
+      background-color: #008c9e;
+      transform: scale(1.1);
+    }
+
+    .contact-list.show {
+      display: block;
+      opacity: 1;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .card {
+        width: 90%; /* Reduce card width for small devices */
+        padding: 15px;
+      }
+
+      .toggle-btn {
+        bottom: 15px;
+        right: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Bubble Background -->
+  <div class="bubbles">
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+  </div>
+
+  <!-- Contact Card -->
+  <div class="card">
+    <img src="sanu.png" alt="Profile Picture" class="profile-pic">
+    <div class="name">Sanu Kumar Panda</div>
+    <div class="subtitle">How to reach me</div>
+    <ul class="contact-list">
+      <li><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook Icon"> <a href="https://www.facebook.com/share/1BFhXJJWVe/">Facebook</a></li>
+      <li><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram Icon"> <a href="https://www.instagram.com/kumar_.07/profilecard/?igsh=MmM3aHFncTJodjd0">Instagram</a></li>
+      <li><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn Icon"> <a href="https://www.linkedin.com/in/sanu-kumar-panda07">LinkedIn</a></li>
+      <li><img src="https://cdn-icons-png.flaticon.com/512/481/481659.png" alt="Phone Icon"> +91 7205343991</li>
+      <li><img src="https://cdn-icons-png.flaticon.com/512/124/124034.png" alt="WhatsApp Icon"> <a href="https://wa.me/qr/ZOP7S5BOXSYZJ1">WhatsApp</a></li>
+      <li><img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email Icon"> <a href="mailto:yourname@example.com">Email</a></li>
+      
+    </ul>
+    <!-- Button Inside the Card -->
+    <button class="toggle-btn"><i class="fas fa-chevron-down"></i></button>
+  </div>
+
+  <!-- JavaScript for Interactivity -->
+  <script>
+    const toggleButton = document.querySelector('.toggle-btn');
+    const contactList = document.querySelector('.contact-list');
+
+    toggleButton.addEventListener('click', () => {
+      contactList.classList.toggle('show');
+      const icon = toggleButton.querySelector('i');
+      if (contactList.classList.contains('show')) {
+        icon.classList.remove('fa-chevron-down');
+        icon.classList.add('fa-chevron-up');
+      } else {
+        icon.classList.remove('fa-chevron-up');
+        icon.classList.add('fa-chevron-down');
+      }
+    });
+  </script>
+</body>
+</html>
